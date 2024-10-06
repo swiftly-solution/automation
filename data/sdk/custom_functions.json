@@ -1,0 +1,135 @@
+{
+    "CPlayerPawnComponent": {
+        "GetPawn": {
+            "return": {
+                "lua": "CBasePlayerPawn"
+            },
+            "params": {}
+        }
+    },
+    "CGameSceneNode": {
+        "GetSkeletonInstance": {
+            "return": {
+                "lua": "CSkeletonInstance"
+            },
+            "params": {}
+        }
+    },
+    "CBasePlayerController": {
+        "EntityIndex": {
+            "return": {
+                "lua": "number"
+            },
+            "params": {}
+        }
+    },
+    "CAttributeList": {
+        "SetOrAddAttributeValueByName": {
+            "return": {
+                "lua": "void"
+            },
+            "params": {
+                "str": "string",
+                "value": "number"
+            }
+        }
+    },
+    "CBaseEntity": {
+        "EmitSound": {
+            "return": {
+                "lua": "void"
+            },
+            "params": {
+                "sound_name": "string",
+                "pitch": "number",
+                "volume": "number"
+            }
+        },
+        "CollisionRulesChanged": {
+            "return": {
+                "lua": "void"
+            },
+            "params": {}
+        },
+        "EHandle": {
+            "return": {
+                "lua": "CBaseEntity"
+            },
+            "params": {}
+        },
+        "Spawn": {
+            "return": {
+                "lua": "void"
+            },
+            "params": {
+                "keyvals": "CEntityKeyValues/nil"
+            }
+        },
+        "Despawn": {
+            "return": {
+                "lua": "void"
+            },
+            "params": {}
+        },
+        "AcceptInput": {
+            "return": {
+                "lua": "void"
+            },
+            "params": {
+                "input": "string",
+                "activator": "CEntityInstance",
+                "caller": "CEntityInstance",
+                "value": "string",
+                "outputID": "number"
+            }
+        },
+        "GetClassname": {
+            "return": {
+                "lua": "string"
+            },
+            "params": {}
+        },
+        "GetVData": {
+            "return": {
+                "lua": "CEntitySubclassVDataBase"
+            },
+            "params": {}
+        },
+        "Teleport": {
+            "return": {
+                "lua": "void"
+            },
+            "params": {
+                "value": "Vector",
+                "angle": "QAngle"
+            }
+        }
+    },
+    "CBaseModelEntity": {
+        "SetBodygroup": {
+            "return": {
+                "lua": "void"
+            },
+            "params": {
+                "str": "string",
+                "val": "value"
+            }
+        },
+        "SetModel": {
+            "return": {
+                "lua": "void"
+            },
+            "params": {
+                "model": "string"
+            }
+        },
+        "SetSolidType": {
+            "return": {
+                "lua": "void"
+            },
+            "params": {
+                "solidType": "number"
+            }
+        }
+    }
+}

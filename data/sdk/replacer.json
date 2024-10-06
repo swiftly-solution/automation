@@ -1,0 +1,21 @@
+{
+    "GameTime_t": "float",
+    "CPlayerSlot": "int32",
+    "HSequence": "int32",
+    "CSplitScreenSlot": "int32",
+    "GameTick_t": "int32",
+    "AmmoIndex_t": "uint32",
+    "CEntityIndex": "int32",
+    "CNetworkedQuantizedFloat": "float",
+    "RotationVector": "Vector",
+    "VectorAligned": "Vector",
+    "fltx4": "float",
+    "float64": "double",
+    "float32": "float",
+    "CEntityHandle": "CHandle<CEntityInstance>",
+    "CNetworkUtlVectorBase": "CUtlVector",
+    "CUtlVectorEmbeddedNetworkVar": "CUtlVector",
+    "CStrongHandle": "CHandle",
+    "CHandleCopyable": "CHandle",
+    "WorldGroupId_t": "CUtlStringToken"
+}
