@@ -1,0 +1,17 @@
+[
+    "clientmessages.proto",
+    "usermessages.proto",
+    "te.proto",
+    "usercmd.proto",
+    "networksystem_protomessages.proto",
+    "cs_gameevents.proto",
+    "cs_usercmd.proto",
+    "cstrike15_gcmessages.proto",
+    "cstrike15_usermessages.proto",
+    "gcsdk_gcmessages.proto",
+    "steammessages.proto",
+    "network_connection.proto",
+    "networkbasetypes.proto",
+    "netmessages.proto",
+    "engine_gcmessages.proto"
+]

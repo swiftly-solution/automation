@@ -43,6 +43,7 @@ function ParseClass(content) {
         if(row.startsWith("class")) {
             const tokenized = row.split(" ");
             className = tokenized[1]
+            
             if(row.includes(" : "))
                 classData.parent = row.split(" : ")[1].split(" ")[1].trim();
 
@@ -93,6 +94,9 @@ function ParseClass(content) {
             }
         }
     }
+
+    if(className.includes("::"))
+        className = "";
 
     return [className, classData]
 }

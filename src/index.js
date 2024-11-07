@@ -7,6 +7,7 @@ import { ProcessGameEvents } from './modules/gameevents.js';
 import { SDKParser } from './modules/sdkparser.js';
 import { ProcessSDKTypes } from './modules/sdktypes.js';
 import { ProcessSDKClasses } from './modules/sdkclasses.js';
+import { ProcessProtobufs } from './modules/protobufs.js';
 
 config()
 
@@ -22,7 +23,7 @@ if(existsSync("GameTracking-CS2")) {
     execSync("git clone https://github.com/SteamDatabase/GameTracking-CS2")
 }
 
-const processFunctions = [ProcessGameEvents, ProcessSDKTypes, ProcessSDKClasses]
+const processFunctions = [ProcessGameEvents, ProcessSDKTypes, ProcessSDKClasses, ProcessProtobufs]
 var output = {
     swiftly: {
         files: {}
