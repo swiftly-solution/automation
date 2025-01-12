@@ -13,11 +13,13 @@ export function ProcessCVars(tmp) {
         const commandMain = commandStrings[0].trim()
         const description = commandStrings[1].trim()
 
-        let args = commandStrings[2]
-        if (typeof args == "string") args = args.split(":")[1]
-
         const commandFlags = commandMain.split("(")[1].split(")")[0].split(" ")
-        const commandName = commandMain.split("(")[0].trim()
+        const commandFullName = commandMain.split("(")[0].trim()
+
+        const commandName = commandFullName.split(" ")[0]
+        let commandValue = commandFullName.split(" ")
+        commandValue.shift()
+        let args = commandValue.join(" ")
 
         docsOutput[commandName.toLowerCase()] = {
             title: commandName,
