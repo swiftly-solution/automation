@@ -244,6 +244,11 @@ export function ProcessSDKClasses(sdk) {
                 }
             }
 
+            if (type.includes("::")) {
+                delete documentation[className.toLowerCase()].properties[field];
+                continue;
+            }
+
             if (!type.includes("*") && !type.includes("CHandle") && !type.includes("CUtlVector") && type != "char*" && !type.startsWith("G")) { }
             else {
                 documentation[className.toLowerCase()].properties[field].writable = false
