@@ -1,7 +1,7 @@
 import { Octokit } from '@octokit/core';
 import { config } from 'dotenv'
 import { createPullRequest } from 'octokit-plugin-create-pull-request';
-import { existsSync } from 'fs';
+import { existsSync, writeFileSync } from 'fs';
 import { execSync } from 'child_process';
 import { ProcessGameEvents } from './modules/gameevents.js';
 import { SDKParser } from './modules/sdkparser.js';
@@ -17,7 +17,7 @@ const octokit = new MyOctokit({
     auth: process.env.GITHUB_ACC_TOKEN,
 });
 
-if(existsSync("GameTracking-CS2")) {
+if (existsSync("GameTracking-CS2")) {
     execSync("cd GameTracking-CS2; git fetch; git pull origin master")
 } else {
     execSync("git clone https://github.com/SteamDatabase/GameTracking-CS2")
@@ -34,16 +34,17 @@ var output = {
 }
 const parsedSDK = SDKParser()
 
-for(const func of processFunctions) {
+for (const func of processFunctions) {
     const out = func(parsedSDK)
-    output.swiftly.files = {...output.swiftly.files, ...out.swiftly.files}
-    output.documentation.files = {...output.documentation.files, ...out.documentation.files}
+    output.swiftly.files = { ...output.swiftly.files, ...out.swiftly.files }
+    output.documentation.files = { ...output.documentation.files, ...out.documentation.files }
 }
 
 const dt = new Date();
 const date = `${dt.getDate()}.${dt.getMonth() + 1}.${dt.getFullYear()}`
 
-for(const key of Object.keys(output)) {
+for (const key of Object.keys(output)) {
+    if (key == "documentation") continue;
     octokit.createPullRequest({
         owner: "swiftly-solution",
         repo: key,
@@ -59,4 +60,8 @@ for(const key of Object.keys(output)) {
             }
         ]
     })
+}
+
+for (const file of Object.keys(output.documentation.files)) {
+    writeFileSync(`../${file}`, output.documentation.files[file])
 }

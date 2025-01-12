@@ -131,7 +131,7 @@ function GenerateFieldType(field) {
                 if (dataTypeMap[dataType]) extraData.type = dataTypeMap[dataType]
             }
         }
-        
+
     } else {
         if (classnames.includes(type.split("*").shift())) {
             extraData.classname = type.split("*").shift()
@@ -147,7 +147,7 @@ export function ProcessSDKClasses(sdk) {
     var documentation = {}
     classnames = Object.keys(sdk.classes)
 
-    for(const typeName of Object.keys(sdk.types))
+    for (const typeName of Object.keys(sdk.types))
         enums[typeName] = sdk.types[typeName].offset.replace("_t", "")
 
     ////////////////////////////////////////////////
@@ -155,7 +155,7 @@ export function ProcessSDKClasses(sdk) {
     //////////////////////////////////////////////
     const customFunctions = JSON.parse(readFileSync("data/sdk/custom_functions.json").toString())
 
-    for(const className of Object.keys(sdk.classes)) {
+    for (const className of Object.keys(sdk.classes)) {
         documentation[className.toLowerCase()] = {
             title: className,
             description: "",
@@ -171,7 +171,7 @@ export function ProcessSDKClasses(sdk) {
             additional: {}
         }
 
-        for(const field of Object.keys(sdk.classes[className].fields)) {
+        for (const field of Object.keys(sdk.classes[className].fields)) {
             var type = sdk.classes[className].fields[field].dataType
 
             for (const cls of classnames)
@@ -179,7 +179,7 @@ export function ProcessSDKClasses(sdk) {
                     type = type.replace(new RegExp(cls, "g"), `G${cls}`)
                     break
                 }
-    
+
             if (type.includes("CEntityIndex")) {
                 type = type.replace(/CEntityIndex/g, "int")
             } else if (type.includes("char[")) {
@@ -218,7 +218,7 @@ export function ProcessSDKClasses(sdk) {
                 }
             } else {
                 var docsType = type
-                if(docsType.includes("*")) docsType = docsType.slice(0,-1)
+                if (docsType.includes("*")) docsType = docsType.slice(0, -1)
                 else if (docsType.startsWith("CHandle<")) docsType = docsType.split("CHandle<")[1].split(">")[0]
 
                 if (docsType.startsWith("G")) {
@@ -256,7 +256,7 @@ export function ProcessSDKClasses(sdk) {
                 writable: false
             }
         }
-    
+
         documentation[className.toLowerCase()].functions["ToPtr"] = {
             return: {
                 lua: "string"
@@ -279,20 +279,20 @@ export function ProcessSDKClasses(sdk) {
     //////////////////////////////////////////////
     var output = {}
 
-    for(const className of Object.keys(sdk.classes)) {
+    for (const className of Object.keys(sdk.classes)) {
         output[className] = {}
 
-        for(const field of Object.keys(sdk.classes[className].fields)) {
+        for (const field of Object.keys(sdk.classes[className].fields)) {
             const generated = GenerateFieldType(sdk.classes[className].fields[field])
-            if(Object.keys(generated).length == 0) { continue; }
-            
+            if (Object.keys(generated).length == 0) { continue; }
+
             output[className][field] = {
                 field: sdk.classes[className].fields[field].fieldAccessName,
                 ...generated
             }
         }
 
-        if(sdk.classes[className].parent) {
+        if (sdk.classes[className].parent) {
             output[className]["Parent"] = {
                 field: sdk.classes[className].parent,
                 type: dataTypeMap["Parent"]
@@ -312,7 +312,7 @@ export function ProcessSDKClasses(sdk) {
         },
         documentation: {
             files: {
-                "docgen/data/data_sdk.json": JSON.stringify(documentation, null, 4)
+                "data/sdkclass/data.json": JSON.stringify(documentation, null, 4)
             }
         }
     }

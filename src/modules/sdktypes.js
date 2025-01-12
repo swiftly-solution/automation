@@ -2,7 +2,7 @@ export function ProcessSDKTypes(sdk) {
     var documentation = {}
     var output = {}
 
-    for(const enumName of Object.keys(sdk.types)) {
+    for (const enumName of Object.keys(sdk.types)) {
         documentation[enumName.toLowerCase()] = {
             title: enumName,
             template: "types-syntax",
@@ -19,7 +19,7 @@ export function ProcessSDKTypes(sdk) {
         },
         documentation: {
             files: {
-                "docgen/data/data_types.json": JSON.stringify(documentation, null, 4)
+                "data/sdktypes/data.json": JSON.stringify(documentation, null, 4)
             }
         }
     }

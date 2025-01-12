@@ -1,20 +1,19 @@
 import { readFileSync } from "fs";
-import { FetchTemplate, ReplacePlaceholder } from "./templates.js";
 import { parse } from "vdf-parser";
 
 export function ProcessGameEvents(tmp) {
     const ignoredEvents = JSON.parse(readFileSync("data/gameevents/ignored_events.json").toString())
     const eventPaths = JSON.parse(readFileSync("data/gameevents/paths.json").toString())
-    const GameEvents = ["std::map<std::string, std::string> gameEventsRegister = {"]
+    const GameEvents = {}
     var gameEventData = {}
     var gameEventsDocs = {}
 
-    for(const path of eventPaths) {
+    for (const path of eventPaths) {
         const parsedVDF = parse(readFileSync(path).toString())
         const events = Object.values(parsedVDF)[0]
-        for(const k in events) {
-            if(ignoredEvents.includes(k)) continue;
-            if(gameEventData.hasOwnProperty(k)) {
+        for (const k in events) {
+            if (ignoredEvents.includes(k)) continue;
+            if (gameEventData.hasOwnProperty(k)) {
                 gameEventData[k] = { ...gameEventData[k], ...events[k] }
             } else {
                 gameEventData[k] = events[k]
@@ -22,7 +21,7 @@ export function ProcessGameEvents(tmp) {
         }
     }
 
-    for(const [eventName, eventData] of Object.entries(gameEventData)) {
+    for (const [eventName, eventData] of Object.entries(gameEventData)) {
         const comment = `This event is triggered when ${eventName} is triggered.`
         const commentPost = `This event is triggered after ${eventName} is triggered.`
         const processedEventName = `On${eventName.split("_").map((a) => (a.charAt(0).toUpperCase() + a.slice(1))).join("")}`;
@@ -47,7 +46,7 @@ export function ProcessGameEvents(tmp) {
             else if (eventData[key] == "player_pawn") params[key] = "int"
         }
 
-        GameEvents.push(`    { "${eventName}", "${processedEventName}" },`)
+        GameEvents[eventName] = processedEventName
         gameEventsDocs[processedEventName.toLowerCase()] = {
             title: processedEventName,
             template: "game-event-syntax",
@@ -58,7 +57,7 @@ export function ProcessGameEvents(tmp) {
             params,
             additional: {}
         }
-    
+
         gameEventsDocs[`${processedEventName.replace("On", "OnPost")}`.toLowerCase()] = {
             title: `${processedEventName.replace("On", "OnPost")}`,
             template: "game-event-syntax",
@@ -71,17 +70,15 @@ export function ProcessGameEvents(tmp) {
         }
     }
 
-    GameEvents.push("};")
-
     return {
         swiftly: {
             files: {
-                "src/engine/gameevents/GGameEvents.h": ReplacePlaceholder(FetchTemplate("gameevents"), "generated", GameEvents.join("\n"))
+                "plugin_files/gamedata/gameevents.json": JSON.stringify(GameEvents, null, 4)
             }
         },
         documentation: {
             files: {
-                "docgen/data/data_gameevents.json": JSON.stringify(gameEventsDocs, null, 4)
+                "data/gameevents/data.json": JSON.stringify(gameEventsDocs, null, 4)
             }
         }
     }
