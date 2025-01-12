@@ -164,7 +164,7 @@ export function ProcessSDKClasses(sdk) {
                 "lua"
             ],
             constructor: {
-                ptr: "string"
+                ptr_or_class: "string|AnySDKClass"
             },
             properties: {},
             functions: customFunctions[className] || {},
