@@ -3,6 +3,7 @@ export function ProcessSDKTypes(sdk) {
     var output = {}
 
     for (const enumName of Object.keys(sdk.types)) {
+        enumName = enumName.replace(/:/g, "_")
         documentation[enumName.toLowerCase()] = {
             title: enumName,
             template: "types-syntax",
