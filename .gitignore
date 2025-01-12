@@ -9,6 +9,5 @@
 #/.pnp.*
 node_modules/
 .yarn/
-GameTracking-CS2
-Source2SDK
+GameTracking-CS2/
 .env
