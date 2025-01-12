@@ -22,7 +22,7 @@ export function ProcessCommands(tmp) {
             title: commandName,
             description,
             args: (args || ""),
-            category: "command-syntax",
+            template: "command-syntax",
             flags: commandFlags
         }
     }
