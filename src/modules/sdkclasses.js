@@ -244,7 +244,7 @@ export function ProcessSDKClasses(sdk) {
                 }
             }
 
-            if (type.includes("::")) {
+            if (type.includes("::") && type != "std::string") {
                 delete documentation[className.toLowerCase()].properties[field];
                 continue;
             }
