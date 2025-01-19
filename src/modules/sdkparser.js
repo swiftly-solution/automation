@@ -95,7 +95,7 @@ function ParseClass(content) {
         }
     }
 
-    if (className.includes("::"))
+    if (className.includes("::") || className.startsWith("C_"))
         className = "";
 
     return [className, classData]
