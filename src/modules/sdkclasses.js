@@ -161,7 +161,8 @@ export function ProcessSDKClasses(sdk) {
             description: "",
             template: "class-syntax",
             languages: [
-                "lua"
+                "lua",
+                "js"
             ],
             constructor: {
                 ptr_or_class: "string|AnySDKClass"
@@ -264,13 +265,15 @@ export function ProcessSDKClasses(sdk) {
 
         documentation[className.toLowerCase()].functions["ToPtr"] = {
             return: {
-                lua: "string"
+                lua: "string",
+                js: "string"
             },
             params: {}
         }
         documentation[className.toLowerCase()].functions["IsValid"] = {
             return: {
-                lua: "bool"
+                lua: "bool",
+                js: "bool"
             },
             params: {}
         }

@@ -2,7 +2,8 @@
     "CPlayerPawnComponent": {
         "GetPawn": {
             "return": {
-                "lua": "CBasePlayerPawn"
+                "lua": "CBasePlayerPawn",
+                "js": "CBasePlayerPawn"
             },
             "params": {}
         }
@@ -10,7 +11,8 @@
     "CGameSceneNode": {
         "GetSkeletonInstance": {
             "return": {
-                "lua": "CSkeletonInstance"
+                "lua": "CSkeletonInstance",
+                "js": "CSkeletonInstance"
             },
             "params": {}
         }
@@ -18,7 +20,8 @@
     "CBasePlayerController": {
         "EntityIndex": {
             "return": {
-                "lua": "number"
+                "lua": "number",
+                "js": "number"
             },
             "params": {}
         }
@@ -26,7 +29,8 @@
     "CAttributeList": {
         "SetOrAddAttributeValueByName": {
             "return": {
-                "lua": "void"
+                "lua": "void",
+                "js": "void"
             },
             "params": {
                 "str": "string",
@@ -37,7 +41,8 @@
     "CBaseEntity": {
         "EmitSound": {
             "return": {
-                "lua": "void"
+                "lua": "void",
+                "js": "void"
             },
             "params": {
                 "sound_name": "string",
@@ -47,19 +52,22 @@
         },
         "CollisionRulesChanged": {
             "return": {
-                "lua": "void"
+                "lua": "void",
+                "js": "void"
             },
             "params": {}
         },
         "EHandle": {
             "return": {
-                "lua": "CBaseEntity"
+                "lua": "CBaseEntity",
+                "js": "CBaseEntity"
             },
             "params": {}
         },
         "Spawn": {
             "return": {
-                "lua": "void"
+                "lua": "void",
+                "js": "void"
             },
             "params": {
                 "keyvals": "CEntityKeyValues/nil"
@@ -67,13 +75,15 @@
         },
         "Despawn": {
             "return": {
-                "lua": "void"
+                "lua": "void",
+                "js": "void"
             },
             "params": {}
         },
         "AcceptInput": {
             "return": {
-                "lua": "void"
+                "lua": "void",
+                "js": "void"
             },
             "params": {
                 "input": "string",
@@ -85,19 +95,22 @@
         },
         "GetClassname": {
             "return": {
-                "lua": "string"
+                "lua": "string",
+                "js": "string"
             },
             "params": {}
         },
         "GetVData": {
             "return": {
-                "lua": "CEntitySubclassVDataBase"
+                "lua": "CEntitySubclassVDataBase",
+                "js": "CEntitySubclassVDataBase"
             },
             "params": {}
         },
         "Teleport": {
             "return": {
-                "lua": "void"
+                "lua": "void",
+                "js": "void"
             },
             "params": {
                 "value": "Vector",
@@ -108,7 +121,8 @@
     "CBaseModelEntity": {
         "SetBodygroup": {
             "return": {
-                "lua": "void"
+                "lua": "void",
+                "js": "void"
             },
             "params": {
                 "str": "string",
@@ -117,7 +131,8 @@
         },
         "SetModel": {
             "return": {
-                "lua": "void"
+                "lua": "void",
+                "js": "void"
             },
             "params": {
                 "model": "string"
@@ -125,7 +140,8 @@
         },
         "SetSolidType": {
             "return": {
-                "lua": "void"
+                "lua": "void",
+                "js": "void"
             },
             "params": {
                 "solidType": "number"
