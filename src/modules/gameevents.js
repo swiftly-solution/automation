@@ -52,7 +52,8 @@ export function ProcessGameEvents(tmp) {
             template: "game-event-syntax",
             description: comment,
             return: {
-                lua: "void"
+                lua: "void",
+                js: "void"
             },
             params,
             additional: {}
@@ -63,7 +64,8 @@ export function ProcessGameEvents(tmp) {
             template: "game-event-syntax",
             description: commentPost,
             return: {
-                lua: "void"
+                lua: "void",
+                js: "void"
             },
             params,
             additional: {}
