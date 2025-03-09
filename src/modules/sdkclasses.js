@@ -256,6 +256,9 @@ export function ProcessSDKClasses(sdk) {
             else {
                 documentation[className.toLowerCase()].properties[field].writable = false
             }
+
+            if(documentation[className.toLowerCase()].properties[field].type.startsWith("C_"))
+                documentation[className.toLowerCase()].properties[field].type = documentation[className.toLowerCase()].properties[field].type.replace("C_", "C");
         }
 
         if (sdk.classes[className].parent && classnames.includes(sdk.classes[className].parent)) {
