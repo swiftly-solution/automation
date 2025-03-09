@@ -50,6 +50,31 @@
                 "volume": "number"
             }
         },
+        "EmitSoundFromEntity": {
+            "return": {
+                "lua": "void",
+                "js": "void"
+            },
+            "params": {
+                "sound_name": "string",
+                "pitch": "number",
+                "volume": "number",
+                "delay": "number"
+            }
+        },
+        "TakeDamage": {
+            "return": {
+                "lua": "void",
+                "js": "void"
+            },
+            "params": {
+                "attacker": "AnySDKClass",
+                "inflictor": "AnySDKClass",
+                "ability": "AnySDKClass",
+                "damageType": "DamageTypes_t",
+                "damage": "number"
+            }
+        },
         "CollisionRulesChanged": {
             "return": {
                 "lua": "void",
