@@ -64,6 +64,6 @@ for (const key of Object.keys(output)) {
     })
 }
 
-for (const file of Object.keys(output.documentation.files)) {
-    writeFileSync(`../${file}`, output.documentation.files[file])
-}
+// for (const file of Object.keys(output.documentation.files)) {
+//     writeFileSync(`../${file}`, output.documentation.files[file])
+// }

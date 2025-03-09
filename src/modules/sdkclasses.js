@@ -140,6 +140,8 @@ function GenerateFieldType(field) {
         if (dataTypeMap[type]) extraData.type = dataTypeMap[type]
     }
 
+    if(extraData.classname && extraData.classname.startsWith("C_")) extraData.classname = extraData.classname.replace("C_", "C");
+
     return extraData
 }
 
@@ -250,7 +252,7 @@ export function ProcessSDKClasses(sdk) {
                 continue;
             }
 
-            if (!type.includes("*") && !type.includes("CHandle") && !type.includes("CUtlVector") && type != "char*" && !type.startsWith("G")) { }
+            if (!type.includes("*") && (!type.includes("CHandle") || type.startsWith("CHandle")) && !type.includes("CUtlVector") && type != "char*" && !type.startsWith("G")) { }
             else {
                 documentation[className.toLowerCase()].properties[field].writable = false
             }
