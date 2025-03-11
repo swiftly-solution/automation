@@ -195,9 +195,6 @@ export function ProcessSDKClasses(sdk) {
                 type = "std::string"
             } else if (type == "CUtlStringToken") {
                 type = "uint32"
-            } else if (Object.keys(sdk.types).filter((e) => type.includes(e)).length > 0) {
-                const enumName = Object.keys(sdk.types).filter((e) => type.includes(e))[0]
-                type = type.replace(new RegExp(enumName, "g"), sdk.types[enumName].offset)
             }
 
             if (type.includes("][")) continue;
