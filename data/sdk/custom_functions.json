@@ -68,9 +68,9 @@
                 "js": "void"
             },
             "params": {
-                "attacker": "AnySDKClass",
-                "inflictor": "AnySDKClass",
-                "ability": "AnySDKClass",
+                "attacker": "any",
+                "inflictor": "any",
+                "ability": "any",
                 "damageType": "DamageTypes_t",
                 "damage": "number"
             }
