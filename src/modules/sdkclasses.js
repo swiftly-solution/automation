@@ -140,7 +140,7 @@ function GenerateFieldType(field) {
         if (dataTypeMap[type]) extraData.type = dataTypeMap[type]
     }
 
-    if(extraData.classname && extraData.classname.startsWith("C_")) extraData.classname = extraData.classname.replace("C_", "C");
+    if (extraData.classname && extraData.classname.startsWith("C_")) extraData.classname = extraData.classname.replace("C_", "C");
 
     return extraData
 }
@@ -254,7 +254,7 @@ export function ProcessSDKClasses(sdk) {
                 documentation[className.toLowerCase()].properties[field].writable = false
             }
 
-            if(documentation[className.toLowerCase()].properties[field].type.startsWith("C_"))
+            if (documentation[className.toLowerCase()].properties[field].type.startsWith("C_"))
                 documentation[className.toLowerCase()].properties[field].type = documentation[className.toLowerCase()].properties[field].type.replace("C_", "C");
         }
 
@@ -317,7 +317,7 @@ export function ProcessSDKClasses(sdk) {
     return {
         swiftly: {
             files: {
-                "plugin_files/gamedata/sdk.json": JSON.stringify(output, null, 4)
+                "plugin_files/gamedata/cs2/sdk.json": JSON.stringify(output, null, 4)
             }
         },
         documentation: {

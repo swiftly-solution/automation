@@ -75,7 +75,7 @@ export function ProcessGameEvents(tmp) {
     return {
         swiftly: {
             files: {
-                "plugin_files/gamedata/gameevents.json": JSON.stringify(GameEvents, null, 4)
+                "plugin_files/gamedata/cs2/gameevents.json": JSON.stringify(GameEvents, null, 4)
             }
         },
         documentation: {

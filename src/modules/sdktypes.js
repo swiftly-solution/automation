@@ -15,7 +15,7 @@ export function ProcessSDKTypes(sdk) {
     return {
         swiftly: {
             files: {
-                "plugin_files/gamedata/sdk_types.json": JSON.stringify(output, null, 4)
+                "plugin_files/gamedata/cs2/sdk_types.json": JSON.stringify(output, null, 4)
             }
         },
         documentation: {
