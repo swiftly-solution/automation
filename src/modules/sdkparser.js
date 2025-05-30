@@ -115,8 +115,11 @@ function ParseEnum(content) {
         else if (row.includes("{") || row.includes("}"))
             continue;
         else if (row.trim().length > 0) {
+            if (row.trim().startsWith("//")) continue;
+
             const rowData = row.split(" = ")
             if (!rowData[1]) console.log(row)
+
             enumData[rowData[0].trim()] = Number(rowData[1].split(",")[0].trim())
         }
     }
@@ -135,8 +138,14 @@ export function SDKParser() {
 
     for (const file of readdirSync("GameTracking-CS2/DumpSource2/schemas", { recursive: true })) {
         if (statSync(`GameTracking-CS2/DumpSource2/schemas/${file}`).isDirectory()) continue;
-        const fileContent = readFileSync(`GameTracking-CS2/DumpSource2/schemas/${file}`).toString()
+        let fileContent = readFileSync(`GameTracking-CS2/DumpSource2/schemas/${file}`).toString()
         if (file.includes("InfoForResourceType") || file.includes("Pulse")) continue;
+
+        const content = fileContent.split("\n");
+        while (content[0].startsWith("//")) {
+            content.shift()
+            fileContent = content.join("\n")
+        }
 
         if (fileContent.startsWith("class")) {
             const [className, classData] = ParseClass(fileContent)
