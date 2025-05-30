@@ -206,6 +206,8 @@ export function ProcessSDKClasses(sdk) {
                 }
             } else if (type == "CUtlVector*") {
                 continue;
+            } else if (type.trim().startsWith("//")) {
+                continue;
             } else if (type == "std::string") {
                 documentation[className.toLowerCase()].properties[field] = {
                     type: "string",
